@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class VendaComputadorView extends javax.swing.JFrame {
 
-    Computador meuComputador;
+    Computador meuComputador = new Computador();
 
     /**
      * Creates new form VendaComputadorView
@@ -48,10 +48,16 @@ public class VendaComputadorView extends javax.swing.JFrame {
         rdbNotebook = new javax.swing.JRadioButton();
         rdbServidor = new javax.swing.JRadioButton();
         pnlSO = new javax.swing.JPanel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        tglWindows = new javax.swing.JToggleButton();
+        tglLinux = new javax.swing.JToggleButton();
         pnlHD = new javax.swing.JPanel();
+        cbbHD = new javax.swing.JComboBox<>();
         pnlAcessorios = new javax.swing.JPanel();
+        ckbMousepad = new javax.swing.JCheckBox();
+        ckbHub = new javax.swing.JCheckBox();
+        ckbMochila = new javax.swing.JCheckBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstServicos = new javax.swing.JList<>();
         btnSalvar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -79,6 +85,7 @@ public class VendaComputadorView extends javax.swing.JFrame {
 
         grpTipoPC.add(rdbNotebook);
         rdbNotebook.setText("Notebook");
+        rdbNotebook.setName(""); // NOI18N
         rdbNotebook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rdbNotebookActionPerformed(evt);
@@ -105,7 +112,7 @@ public class VendaComputadorView extends javax.swing.JFrame {
                     .addComponent(rdbPC))
                 .addGap(18, 18, 18)
                 .addComponent(lblImagem)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlComputadorLayout.setVerticalGroup(
             pnlComputadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,11 +133,11 @@ public class VendaComputadorView extends javax.swing.JFrame {
 
         pnlSO.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sistema Operacional", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        grpSO.add(jToggleButton1);
-        jToggleButton1.setText("Windows");
+        grpSO.add(tglWindows);
+        tglWindows.setText("Windows");
 
-        grpSO.add(jToggleButton2);
-        jToggleButton2.setText("Linux");
+        grpSO.add(tglLinux);
+        tglLinux.setText("Linux");
 
         javax.swing.GroupLayout pnlSOLayout = new javax.swing.GroupLayout(pnlSO);
         pnlSO.setLayout(pnlSOLayout);
@@ -138,9 +145,9 @@ public class VendaComputadorView extends javax.swing.JFrame {
             pnlSOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSOLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tglWindows, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tglLinux, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         pnlSOLayout.setVerticalGroup(
@@ -148,38 +155,82 @@ public class VendaComputadorView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSOLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlSOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton1)
-                    .addComponent(jToggleButton2))
+                    .addComponent(tglWindows)
+                    .addComponent(tglLinux))
                 .addGap(14, 14, 14))
         );
 
-        pnlHD.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Altere este título conforme prototipo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        pnlHD.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Escolha o tipo e capacidade do HD", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+
+        cbbHD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HD 1TB", "SSD 256GB", "SSD 1TB" }));
 
         javax.swing.GroupLayout pnlHDLayout = new javax.swing.GroupLayout(pnlHD);
         pnlHD.setLayout(pnlHDLayout);
         pnlHDLayout.setHorizontalGroup(
             pnlHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHDLayout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(cbbHD, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
         pnlHDLayout.setVerticalGroup(
             pnlHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 45, Short.MAX_VALUE)
+            .addGroup(pnlHDLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cbbHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        pnlAcessorios.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Altere este título conforme prototipo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        pnlAcessorios.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Acessórios e serviços", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+
+        ckbMousepad.setText("MousePad");
+
+        ckbHub.setText("Hub USB");
+
+        ckbMochila.setText("Mochila");
+
+        lstServicos.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Garantia Estendida", "Suporte no Local", "Suporte 24 horas", "Instalação do SO" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(lstServicos);
 
         javax.swing.GroupLayout pnlAcessoriosLayout = new javax.swing.GroupLayout(pnlAcessorios);
         pnlAcessorios.setLayout(pnlAcessoriosLayout);
         pnlAcessoriosLayout.setHorizontalGroup(
             pnlAcessoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(pnlAcessoriosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlAcessoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ckbMousepad)
+                    .addComponent(ckbHub)
+                    .addComponent(ckbMochila))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         pnlAcessoriosLayout.setVerticalGroup(
             pnlAcessoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 115, Short.MAX_VALUE)
+            .addGroup(pnlAcessoriosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlAcessoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(pnlAcessoriosLayout.createSequentialGroup()
+                        .addComponent(ckbMousepad)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ckbHub)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ckbMochila)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
 
@@ -211,20 +262,18 @@ public class VendaComputadorView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(pnlAcessorios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pnlComputador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pnlHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pnlSO, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(pnlAcessorios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pnlComputador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pnlHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pnlSO, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(54, 54, 54)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCancelar, btnSalvar});
@@ -273,6 +322,71 @@ public class VendaComputadorView extends javax.swing.JFrame {
         novoCliente.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // TODO add your handling code here:
+        
+        if (rdbNotebook.isSelected()) {
+           meuComputador.setTipoComputador(rdbNotebook.getText());
+        }
+        
+        else if (rdbPC.isSelected()) {
+           meuComputador.setTipoComputador(rdbPC.getText());
+        }
+        
+        else {
+           meuComputador.setTipoComputador(rdbServidor.getText());
+        }
+        
+        if (tglWindows.isSelected()) {
+            meuComputador.setSistemaOperacional(tglWindows.getText());
+        }
+        
+        else if (tglLinux.isSelected()) {
+            meuComputador.setSistemaOperacional(tglLinux.getText());
+        }
+        
+        meuComputador.setHd(cbbHD.getSelectedItem().toString());
+        
+        if (ckbMousepad.isSelected() && ckbMochila.isSelected() && ckbHub.isSelected()) {
+            String[] ac = {ckbMousepad.getText(), ckbMochila.getText(), ckbHub.getText()};
+            meuComputador.setAcessorios(ac);
+        }
+        
+        else if (ckbMousepad.isSelected() && ckbMochila.isSelected()) {
+            String[] ac = {ckbMousepad.getText(), ckbMochila.getText()};
+            meuComputador.setAcessorios(ac);
+        }
+        
+        else if (ckbMousepad.isSelected() && ckbHub.isSelected()) {
+            String[] ac = {ckbMousepad.getText(), ckbHub.getText()};
+            meuComputador.setAcessorios(ac);
+        }
+        
+        else if (ckbMochila.isSelected() && ckbHub.isSelected()) {
+            String[] ac = {ckbMochila.getText(), ckbHub.getText()};
+            meuComputador.setAcessorios(ac);
+        }
+        
+        else if (ckbMochila.isSelected()) {
+            String[] ac = {ckbMochila.getText()};
+            meuComputador.setAcessorios(ac);
+        }
+        
+        else if (ckbHub.isSelected()) {
+            String[] ac = {ckbHub.getText()};
+            meuComputador.setAcessorios(ac);
+        }
+        
+        else if (ckbMousepad.isSelected()) {
+            String[] ac = {ckbMousepad.getText()};
+            meuComputador.setAcessorios(ac);
+        }
+        
+        
+        JOptionPane.showMessageDialog(null, "Obrigado por comprar um " + meuComputador.getTipoComputador() + " com " + meuComputador.getSistemaOperacional());
+        
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -315,6 +429,10 @@ public class VendaComputadorView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JComboBox<String> cbbHD;
+    private javax.swing.JCheckBox ckbHub;
+    private javax.swing.JCheckBox ckbMochila;
+    private javax.swing.JCheckBox ckbMousepad;
     private javax.swing.ButtonGroup grpSO;
     private javax.swing.ButtonGroup grpTipoPC;
     private javax.swing.JMenu jMenu1;
@@ -322,9 +440,9 @@ public class VendaComputadorView extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblImagem;
+    private javax.swing.JList<String> lstServicos;
     private javax.swing.JPanel pnlAcessorios;
     private javax.swing.JPanel pnlComputador;
     private javax.swing.JPanel pnlHD;
@@ -332,5 +450,7 @@ public class VendaComputadorView extends javax.swing.JFrame {
     private javax.swing.JRadioButton rdbNotebook;
     private javax.swing.JRadioButton rdbPC;
     private javax.swing.JRadioButton rdbServidor;
+    private javax.swing.JToggleButton tglLinux;
+    private javax.swing.JToggleButton tglWindows;
     // End of variables declaration//GEN-END:variables
 }
